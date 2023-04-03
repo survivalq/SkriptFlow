@@ -11,7 +11,7 @@ Downloading or installing is very simple, here is how:
 
 ## Steps:
 - Make sure your system supports .NET 7.0 or later. [Download Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
-- Now you can download the SkriptFlow [Download SkripFlow Build](https://github.com/survivalq/Exo-Clicker/releases/tag/v0.1.0)
+- Now you can download the SkriptFlow [Download SkripFlow Build](https://github.com/survivalq/SkriptFlow/releases/tag/Stable)
 
 # Themes
 ![This is an image](https://media.discordapp.net/attachments/891649862817427531/1092468653292781618/image.png?width=423&height=280)
