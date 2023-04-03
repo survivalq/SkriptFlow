@@ -1,5 +1,5 @@
 # SkriptFlow
-![This is an image](https://media.discordapp.net/attachments/891649862817427531/1092464136803319808/skriptflow_logo.png?width=1191&height=670)
+![This is an image](https://media.discordapp.net/attachments/891649862817427531/1092520940224659507/skriptflow_logo.png?width=992&height=415)
 > Advance lore/skript generator.
 
 # What is it about?
