@@ -8,6 +8,8 @@ using ImGuiNET;
 using Pastel;
 using System.Drawing;
 
+// Check the documentation to make plugins yourself, it gives details on how basic structure should be.
+
 namespace SkriptFlow.Tabs
 {
     internal class PluginManager

@@ -10,15 +10,21 @@ using Newtonsoft.Json;
 using Pastel;
 using System.Drawing;
 using SkriptFlow.FlowEngine;
+using System.Runtime.InteropServices;
 
 namespace SkriptFlow.Render
 {
     internal class FlowOverlay : Overlay
     {
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         private bool isOpenWindow = true;
         private bool isOpenWindowPlugin = false;
         private bool isOpenWindowTheme = false;
         private string selectedTheme = null;
+        private bool developerConsole = false;
+
         ArmorTab armorTab = new ArmorTab();
         WeaponTab weaponTab = new WeaponTab();
         SkriptChestTab skriptChestTab = new SkriptChestTab();
@@ -62,7 +68,7 @@ namespace SkriptFlow.Render
         {
             ImGui.Begin("SkriptFlow", ref isOpenWindow, ImGuiWindowFlags.MenuBar);
 
-            // Menubar
+            // Menubar for Plugins and Themes
             if (ImGui.BeginMenuBar())
             {
                 if (ImGui.BeginMenu("Plugins"))
@@ -112,6 +118,7 @@ namespace SkriptFlow.Render
                     }
                     ImGui.EndMenu();
                 }
+
                 ImGui.EndMenuBar();
             }
 

@@ -1,6 +1,9 @@
 using ImGuiNET;
 using System.Numerics;
 
+// Themes should be always made compatible with the github version.
+// If you want more theme settings, make a pull request and it might get implemented.
+
 namespace SkriptFlow.Render
 {
     public class SettingsData
