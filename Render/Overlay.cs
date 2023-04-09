@@ -23,7 +23,6 @@ namespace SkriptFlow.Render
         private bool isOpenWindowPlugin = false;
         private bool isOpenWindowTheme = false;
         private string selectedTheme = null;
-        private bool developerConsole = false;
 
         ArmorTab armorTab = new ArmorTab();
         WeaponTab weaponTab = new WeaponTab();

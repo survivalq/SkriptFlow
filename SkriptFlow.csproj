@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ApplicationIcon>icon.ico</ApplicationIcon>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Plugin Examples/**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
