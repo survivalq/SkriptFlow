@@ -19,9 +19,9 @@ namespace SkriptFlow.Render
         [DllImport("user32.dll")]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-        private bool isOpenWindow = true;
-        private bool isOpenWindowPlugin = false;
-        private bool isOpenWindowTheme = false;
+        private bool isMainWindowActive = true;
+        private bool isPluginWindowActive = false;
+        private bool isThemeWindowActive = false;
         private string selectedTheme = null;
 
         ArmorTab armorTab = new ArmorTab();
@@ -65,7 +65,7 @@ namespace SkriptFlow.Render
 
         protected override void Render()
         {
-            ImGui.Begin("SkriptFlow", ref isOpenWindow, ImGuiWindowFlags.MenuBar);
+            ImGui.Begin("SkriptFlow", ref isMainWindowActive, ImGuiWindowFlags.MenuBar);
 
             // Menubar for Plugins and Themes
             if (ImGui.BeginMenuBar())
@@ -91,7 +91,7 @@ namespace SkriptFlow.Render
 
                     if (ImGui.MenuItem("Open Plugins"))
                     {
-                        isOpenWindowPlugin = true;
+                        isPluginWindowActive = true;
                     }
                     ImGui.EndMenu();
                 }
@@ -113,7 +113,7 @@ namespace SkriptFlow.Render
 
                     if (ImGui.MenuItem("Open Themes"))
                     {
-                        isOpenWindowTheme = true;
+                        isThemeWindowActive = true;
                     }
                     ImGui.EndMenu();
                 }
@@ -122,19 +122,19 @@ namespace SkriptFlow.Render
             }
 
             // Plugins Window
-            if (isOpenWindowPlugin)
+            if (isPluginWindowActive)
             {
-                ImGui.Begin("Plugins", ref isOpenWindowPlugin);
+                ImGui.Begin("Plugins", ref isPluginWindowActive);
                 pluginManager.RenderTab();
                 ImGui.End();
             }
 
             // Themes Window
-            if (isOpenWindowTheme)
+            if (isThemeWindowActive)
             {
                 string[] themeFiles = Directory.GetFiles(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "themes"), "*.json");
                 
-                ImGui.Begin("Themes", ref isOpenWindowTheme);
+                ImGui.Begin("Themes", ref isThemeWindowActive);
                 ImGui.Text("Theme Manager - select and load the theme.");
                 ImGui.Separator();
                 
@@ -231,7 +231,7 @@ namespace SkriptFlow.Render
                 }
             }
 
-            if (isOpenWindow == false)
+            if (isMainWindowActive == false)
             {
                 this.Close();
             }
