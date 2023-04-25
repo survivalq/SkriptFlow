@@ -78,7 +78,7 @@ namespace SkriptFlow.Tabs
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{Logger.Log("error")} {$"Error loading plugin {dllFile}: {ex.Message}".Pastel(Color.Red)}");
+                    Logger.Log(LogLevel.ERROR, $"Error loading plugin {dllFile}: {ex.Message}");
                 }
             }
         }

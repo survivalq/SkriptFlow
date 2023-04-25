@@ -83,7 +83,7 @@ namespace SkriptFlow.Render
                         {
                             if (!Directory.Exists(pluginsFolder))
                             {
-                                Console.WriteLine($"{Logger.Log("info")} {$"Creating folder plugins...".Pastel(Color.Lime)}");
+                                Logger.Log(LogLevel.INFO, $"Creating folder plugins...");
                                 Directory.CreateDirectory(pluginsFolder);
                             }
                         }
@@ -102,7 +102,7 @@ namespace SkriptFlow.Render
                     string themesFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "themes");
                     if (!Directory.Exists(themesFolder))
                     {
-                        Console.WriteLine($"{Logger.Log("info")} {$"Creating folder themes...".Pastel(Color.Lime)}");
+                        Logger.Log(LogLevel.INFO, $"Creating folder themes...");
                         Directory.CreateDirectory(themesFolder);
                     }
 
@@ -170,7 +170,7 @@ namespace SkriptFlow.Render
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"{Logger.Log("error")} {$"{ex}".Pastel(Color.Red)}");
+                            Logger.Log(LogLevel.ERROR, $"{ex}");
                         }
                     }
                 }

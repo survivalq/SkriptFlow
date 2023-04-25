@@ -1,32 +1,74 @@
 using System;
 using System.Drawing;
+using System.Text;
 using Pastel;
+
+// Latest logger class, feel free to integrate it in your plugin project.
+// Make sure that Pastel nuget package is installed before using it.
 
 namespace SkriptFlow.FlowEngine
 {
-    public class Logger
+    public enum LogLevel
     {
-        public static string Log(string type)
+        INFO,
+        WARN,
+        ERROR,
+        DEBUG,
+        FATAL
+    }
+
+    public static class Logger
+    {
+        public static void Log(LogLevel level, string message)
         {
-            switch (type)
+            var sb = new StringBuilder();
+
+            sb.Append($"{$"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}".Pastel(Color.LightGray)} ");
+            sb.Append($"{"|".Pastel(Color.LightGray)} ");
+
+            switch (level)
             {
-                case "info":
-                    type = $"{$"[{DateTime.Now.ToString("HH:mm:ss")}".Pastel(Color.LightGray)} {"|".Pastel(Color.LightGray)} {"INFO".Pastel(Color.Cyan)} {"|".Pastel(Color.LightGray)} {"+".Pastel(Color.Green)} {"]".Pastel(Color.LightGray)}";
+                case LogLevel.INFO:
+                    sb.Append($"{"INFO".PadRight(5).Pastel(Color.Cyan)} ");
+                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
+                    sb.Append($"{"+".Pastel(Color.Green)} ");
+                    sb.Append($"] {message.Pastel(Color.LightBlue)}");
                     break;
 
-                case "error":
-                    type = $"{$"[{DateTime.Now.ToString("HH:mm:ss")}".Pastel(Color.LightGray)} {"|".Pastel(Color.LightGray)} {"ERROR".Pastel(Color.Red)} {"|".Pastel(Color.LightGray)} {"-".Pastel(Color.Red)} {"]".Pastel(Color.LightGray)}";
+                case LogLevel.WARN:
+                    sb.Append($"{"WARN".PadRight(5).Pastel(Color.Yellow)} ");
+                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
+                    sb.Append($"{"!".Pastel(Color.Yellow)} ");
+                    sb.Append($"] {message.Pastel(Color.LightGoldenrodYellow)}");
                     break;
-                
-                case "warn":
-                    type = $"{$"[{DateTime.Now.ToString("HH:mm:ss")}".Pastel(Color.LightGray)} {"|".Pastel(Color.LightGray)} {"WARN".Pastel(Color.Yellow)} {"|".Pastel(Color.LightGray)} {"!".Pastel(Color.Yellow)} {"]".Pastel(Color.LightGray)}";
+
+                case LogLevel.ERROR:
+                    sb.Append($"{"ERROR".PadRight(5).Pastel(Color.Red)} ");
+                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
+                    sb.Append($"{"-".Pastel(Color.DarkRed)} ");
+                    sb.Append($"] {message.Pastel(Color.OrangeRed)}");
+                    break;
+
+                case LogLevel.DEBUG:
+                    sb.Append($"{"DEBUG".PadRight(5).Pastel(Color.Violet)} ");
+                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
+                    sb.Append($"{"*".Pastel(Color.Magenta)} ");
+                    sb.Append($"] {message.Pastel(Color.LightGray)}");
+                    break;
+
+                case LogLevel.FATAL:
+                    sb.Append($"{"FATAL".PadRight(5).Pastel(Color.Crimson)} ");
+                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
+                    sb.Append($"{"X".Pastel(Color.Crimson)} ");
+                    sb.Append($"] {message.PastelBg(Color.DarkRed).Pastel(Color.White)}");
                     break;
 
                 default:
-                    type = $"{$"[{DateTime.Now.ToString("HH:mm:ss")}".Pastel(Color.LightGray)} {"|".Pastel(Color.LightGray)} {"INFO".Pastel(Color.Cyan)} {"|".Pastel(Color.LightGray)} {"*".Pastel(Color.Magenta)} {"]".Pastel(Color.LightGray)}";
+                    sb.Append($"{message.Pastel(Color.Black)}");
                     break;
             }
-            return type;
+
+            Console.WriteLine(sb.ToString());
         }
     }
 }
