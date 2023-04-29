@@ -7,59 +7,33 @@ using System.Diagnostics;
 using System.IO;
 using System;
 using Newtonsoft.Json;
-using Pastel;
-using System.Drawing;
 using SkriptFlow.FlowEngine;
-using System.Runtime.InteropServices;
 
 namespace SkriptFlow.Render
 {
     internal class FlowOverlay : Overlay
     {
-        [DllImport("user32.dll")]
-        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
+        // Parameters
         private bool isMainWindowActive = true;
         private bool isPluginWindowActive = false;
         private bool isThemeWindowActive = false;
         private string selectedTheme = null;
 
+        // Classes
         ArmorTab armorTab = new ArmorTab();
         WeaponTab weaponTab = new WeaponTab();
         SkriptChestTab skriptChestTab = new SkriptChestTab();
         PluginManager pluginManager = new PluginManager();
+        ThemeManager themeManager = new ThemeManager();
+
+        // Enables DPIAwareness
+        public FlowOverlay() : base(true) { }
 
         protected override Task PostInitialized()
         {
             this.VSync = true;
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 5.0f);
-            ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 3.5f);
-            ImGui.PushStyleVar(ImGuiStyleVar.WindowTitleAlign, 3f);
-            ImGui.PushStyleColor(ImGuiCol.MenuBarBg, new Vector4(0f, 0f, 0f, 0.5f));
-            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0f, 0f, 0f, 0.9f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.13f, 0.33f, 0.38f, 0.5f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBgHovered, new Vector4(0.13f, 0.33f, 0.38f, 0.7f));
-            ImGui.PushStyleColor(ImGuiCol.FrameBgActive, new Vector4(0.13f, 0.33f, 0.38f, 0.8f));
-            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.13f, 0.33f, 0.38f, 0.5f));
-            ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4(0.13f, 0.33f, 0.38f, 0.7f));
-            ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.13f, 0.33f, 0.38f, 0.8f));
-            ImGui.PushStyleColor(ImGuiCol.Header, new Vector4(0.13f, 0.33f, 0.38f, 0.5f));
-            ImGui.PushStyleColor(ImGuiCol.HeaderHovered, new Vector4(0.13f, 0.33f, 0.38f, 0.7f));
-            ImGui.PushStyleColor(ImGuiCol.HeaderActive, new Vector4(0.13f, 0.33f, 0.38f, 0.8f));
-            ImGui.PushStyleColor(ImGuiCol.TextSelectedBg, new Vector4(0.13f, 0.33f, 0.38f, 0.7f));
-            ImGui.PushStyleColor(ImGuiCol.TitleBg, new Vector4(0.13f, 0.33f, 0.38f, 1.0f));
-            ImGui.PushStyleColor(ImGuiCol.TitleBgCollapsed, new Vector4(0.13f, 0.33f, 0.38f, 0.7f));
-            ImGui.PushStyleColor(ImGuiCol.TitleBgActive, new Vector4(0.13f, 0.33f, 0.38f, 0.9f));
-            ImGui.PushStyleColor(ImGuiCol.Tab, new Vector4(0.13f, 0.33f, 0.38f, 0.5f));
-            ImGui.PushStyleColor(ImGuiCol.TabHovered, new Vector4(0.13f, 0.33f, 0.38f, 0.7f));
-            ImGui.PushStyleColor(ImGuiCol.TabActive, new Vector4(0.13f, 0.33f, 0.38f, 0.8f));
-            ImGui.PushStyleColor(ImGuiCol.TabUnfocused, new Vector4(0.13f, 0.33f, 0.38f, 0.5f));
-            ImGui.PushStyleColor(ImGuiCol.TabUnfocusedActive, new Vector4(0.13f, 0.33f, 0.38f, 0.8f));
-            ImGui.PushStyleColor(ImGuiCol.ResizeGrip, new Vector4(0.13f, 0.33f, 0.38f, 0.8f));
-            ImGui.PushStyleColor(ImGuiCol.ResizeGripHovered, new Vector4(0.13f, 0.33f, 0.38f, 0.7f));
-            ImGui.PushStyleColor(ImGuiCol.ResizeGripActive, new Vector4(0.13f, 0.33f, 0.38f, 0.8f));
-            ImGui.PushStyleColor(ImGuiCol.CheckMark, new Vector4(1f, 1f, 1f, 1f));
+            themeManager.ApplyDefaultTheme();
+            ReplaceFont(@"C:\Windows\Fonts\segoeui.ttf", 22, FontGlyphRangeType.English); // TODO: Add the font option to theme settings
             return Task.CompletedTask;
         }
 
@@ -159,7 +133,6 @@ namespace SkriptFlow.Render
                     if (!string.IsNullOrEmpty(selectedTheme))
                     {
                         string selectedThemeFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "themes", selectedTheme);
-                        ThemeManager themeManager = new ThemeManager();
                         
                         try
                         {

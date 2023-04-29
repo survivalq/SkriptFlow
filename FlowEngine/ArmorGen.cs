@@ -36,6 +36,7 @@ namespace SkriptFlow.FlowEngine
 
             string[] compiledSkript = attachedSkript.Split('\n');
 			string executeSkript = "";
+            
 			foreach (string line in compiledSkript)
 			{
                 if (triggerOption == 0)

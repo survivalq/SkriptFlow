@@ -12,8 +12,8 @@ namespace SkriptFlow
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         static async Task Main(string[] args)
         {
-            Logger.Log(LogLevel.INFO, $"Console enabled. You can now see all alerts from the plugins or by the Skriptflow itself.");
-            ShowWindow(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, 5); // 5 - Show, 0 - Hide : Useful for developers who make plugins.
+            Logger.Log(LogLevel.INFO, $"Console enabled. Everything that happens will be logged here.");
+            ShowWindow(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle, 0); // 5 - Show, 0 - Hide : Useful for developers who make plugins.
             using var overlay = new FlowOverlay();
             await overlay.Run();
         }

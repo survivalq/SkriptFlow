@@ -82,5 +82,38 @@ namespace SkriptFlow.Render
             ImGui.PushStyleColor(ImGuiCol.ScrollbarGrabActive, settings.scrollbarGrabActiveColor);
             ImGui.PushStyleColor(ImGuiCol.ScrollbarGrabHovered, settings.scrollbarGrabHoveredColor);
         }
+
+        public void ApplyDefaultTheme()
+        {
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 0.0f);
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(3f, 2f));
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowTitleAlign, 3f);
+            ImGui.PushStyleColor(ImGuiCol.MenuBarBg, new Vector4(0.059f, 0.051f, 0.071f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4(0.059f, 0.051f, 0.071f, 1.0f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4(0.102f, 0.090f, 0.122f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBgHovered, new Vector4(0.239f, 0.231f, 0.290f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.FrameBgActive, new Vector4(0.412f, 0.408f, 0.459f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0.102f, 0.090f, 0.122f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.ButtonHovered, new Vector4(0.239f, 0.231f, 0.290f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.ButtonActive, new Vector4(0.412f, 0.408f, 0.459f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.Header, new Vector4(0.279f, 0.279f, 0.279f, 0.500f));
+            ImGui.PushStyleColor(ImGuiCol.HeaderHovered, new Vector4(0.494f, 0.494f, 0.494f, 0.518f));
+            ImGui.PushStyleColor(ImGuiCol.HeaderActive, new Vector4(0.642f, 0.642f, 0.642f, 0.518f));
+            ImGui.PushStyleColor(ImGuiCol.TextSelectedBg, new Vector4(0.412f, 0.408f, 0.459f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.TitleBg, new Vector4(0.102f, 0.090f, 0.122f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.TitleBgCollapsed, new Vector4(0.239f, 0.231f, 0.290f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.TitleBgActive, new Vector4(0.071f, 0.071f, 0.090f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.Tab, new Vector4(0.102f, 0.090f, 0.122f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.TabHovered, new Vector4(0.239f, 0.231f, 0.290f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.TabActive, new Vector4(0.412f, 0.408f, 0.459f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.TabUnfocused, new Vector4(0.102f, 0.090f, 0.122f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.TabUnfocusedActive, new Vector4(0.412f, 0.408f, 0.459f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.ResizeGrip, new Vector4(0.412f, 0.408f, 0.459f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.ResizeGripHovered, new Vector4(0.412f, 0.408f, 0.459f, 1.000f));
+            ImGui.PushStyleColor(ImGuiCol.ResizeGripActive, new Vector4(0.642f, 0.642f, 0.642f, 0.518f));
+            ImGui.PushStyleColor(ImGuiCol.CheckMark, new Vector4(1f, 1f, 1f, 1f));
+        }
     }
 }
