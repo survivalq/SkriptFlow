@@ -30,7 +30,7 @@ namespace SkriptFlow.Tabs
                 ImGui.OpenPopup("Edit Lore");
             }
 
-            ImGui.SetNextWindowSize(new Vector2(400, 400), ImGuiCond.Appearing);
+            ImGui.SetNextWindowSize(new Vector2(450, 425), ImGuiCond.Appearing);
             if (ImGui.BeginPopupModal("Edit Lore"))
             {
                 ImGui.Text("Edit Lore:");
@@ -44,14 +44,13 @@ namespace SkriptFlow.Tabs
                 ImGui.EndPopup();
             }
 
-            // Add another multilined input with text above called Custom Skript
             ImGui.Text("Item Skript:");
             if (ImGui.Button("Edit Skript", new Vector2(128, 32)))
             {
                 ImGui.OpenPopup("Edit Skript");
             }
 
-            ImGui.SetNextWindowSize(new Vector2(700, 430), ImGuiCond.Appearing);
+            ImGui.SetNextWindowSize(new Vector2(700, 440), ImGuiCond.Appearing);
             if (ImGui.BeginPopupModal("Edit Skript"))
             {
                 ImGui.Text("Edit Skript:");
@@ -79,10 +78,10 @@ namespace SkriptFlow.Tabs
                 ImGui.EndPopup();
             }
 
-            // Add multilined inputs called "Output Skript" and "Output Give"
             ImGui.Text("Output Skript & Obtain");
-            ImGui.InputTextMultiline("##OutputSkript", ref outputSkript, 32768, new Vector2(500, 100));
-            ImGui.InputTextMultiline("##OutputGive", ref outputGive, 32768, new Vector2(500, 100));
+            ImGui.InputTextMultiline("##OutputSkript", ref outputSkript, 16384, new Vector2(400, 200));
+            ImGui.SameLine();
+            ImGui.InputTextMultiline("##OutputGive", ref outputGive, 16384, new Vector2(400, 200));
 
             (string skriptGive, string skriptCode) = weaponGen.Generate(itemName, customName, itemLore, customNBT, selectedTriggerOption, itemSkript);
             outputGive = skriptGive;

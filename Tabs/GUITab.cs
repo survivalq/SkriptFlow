@@ -18,7 +18,6 @@ namespace SkriptFlow.Tabs
 
         public SkriptChestTab()
         {
-            // Initialize all item names and lore to empty strings
             for (int i = 0; i < NUM_ITEMS; i++)
             {
                 itemNames[i] = "";
@@ -42,7 +41,7 @@ namespace SkriptFlow.Tabs
 
                     // Begin button
                     ImGui.PushID(index);
-                    ImGui.Button($"{itemNames[index]} ({itemAmounts[index]})", new Vector2(32, 32));
+                    ImGui.Button($"{itemNames[index]} ({itemAmounts[index]})", new Vector2(48, 48));
 
                     // Open item selector popup on right-click
                     if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
@@ -56,6 +55,7 @@ namespace SkriptFlow.Tabs
                         ImGui.InputText("Item Name", ref itemNames[index], 50);
                         ImGui.InputText("Custom Name", ref customNames[index], 128);
                         ImGui.InputTextMultiline("Lore", ref itemLores[index], 2048, new Vector2(400, 150));
+                        ImGui.SetNextItemWidth(200);
                         ImGui.InputInt("Amount", ref itemAmounts[index]);
 
                         if (ImGui.Button("Close"))
@@ -77,9 +77,9 @@ namespace SkriptFlow.Tabs
                 }
             }
 
-            ImGui.Text("Output Skript");
+            ImGui.Text("Output Skript:");
             string skriptCode = GenerateSkriptCode();
-            ImGui.InputTextMultiline("##ChestGUI", ref skriptCode, 500, new Vector2(500, 200));
+            ImGui.InputTextMultiline("##ChestGUI", ref skriptCode, 500, new Vector2(750, 200));
         }
 
         private string GenerateSkriptCode()

@@ -5,10 +5,9 @@ using System.Linq;
 using System.Reflection;
 using SkriptFlow.FlowEngine;
 using ImGuiNET;
-using Pastel;
-using System.Drawing;
 
 // Check the documentation to make plugins yourself, it gives details on how basic structure should be.
+// https://github.com/survivalq/SkriptFlow/tree/master/Plugin%20Examples/DOCUMENTATION.md
 
 namespace SkriptFlow.Tabs
 {
@@ -33,7 +32,7 @@ namespace SkriptFlow.Tabs
             }
         }
 
-        public void RenderTab() // Executes the Main() method in each plugin, else will throw error.
+        public void RenderTab()
         {
             ImGui.Text("Plugin Manager - tick the plugin to enable it.");
             ImGui.Separator();
@@ -63,16 +62,12 @@ namespace SkriptFlow.Tabs
                     Assembly assembly = Assembly.LoadFrom(dllFile);
                     loadedAssemblies.Add(assembly);
 
-                    // Get the plugin type
                     Type pluginType = assembly.GetTypes().FirstOrDefault(t => t.GetMethod("Main") != null);
 
-                    // Create an instance of the plugin class
                     object pluginInstance = Activator.CreateInstance(pluginType);
 
-                    // Get the Main method of the plugin
                     MethodInfo renderTabMethod = pluginType.GetMethod("Main");
 
-                    // Add the plugin and its Main method to the dictionaries
                     pluginMethods.Add(Path.GetFileNameWithoutExtension(dllFile), renderTabMethod);
                     pluginInstances.Add(Path.GetFileNameWithoutExtension(dllFile), pluginInstance);
                 }

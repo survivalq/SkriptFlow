@@ -49,7 +49,7 @@ namespace SkriptFlow.Tabs
                 ImGui.OpenPopup("Edit Lore");
             }
 
-            ImGui.SetNextWindowSize(new Vector2(400, 400), ImGuiCond.Appearing);
+            ImGui.SetNextWindowSize(new Vector2(450, 425), ImGuiCond.Appearing);
             if (ImGui.BeginPopupModal("Edit Lore"))
             {
                 ImGui.Text("Edit Lore:");
@@ -69,7 +69,7 @@ namespace SkriptFlow.Tabs
                 ImGui.OpenPopup("Edit Skript");
             }
 
-            ImGui.SetNextWindowSize(new Vector2(700, 430), ImGuiCond.Appearing);
+            ImGui.SetNextWindowSize(new Vector2(700, 465), ImGuiCond.Appearing);
             if (ImGui.BeginPopupModal("Edit Skript"))
             {
                 ImGui.Text("Edit Skript:");
@@ -100,8 +100,9 @@ namespace SkriptFlow.Tabs
             }
 
             ImGui.Text("Output Skript & Obtain");
-            ImGui.InputTextMultiline("##OutputSkript", ref outputSkript, 16384, new Vector2(500, 100));
-            ImGui.InputTextMultiline("##OutputGive", ref outputGive, 16384, new Vector2(500, 100));
+            ImGui.InputTextMultiline("##OutputSkript", ref outputSkript, 16384, new Vector2(400, 200));
+            ImGui.SameLine();
+            ImGui.InputTextMultiline("##OutputGive", ref outputGive, 16384, new Vector2(400, 200));
 
             (string skriptGive, string skriptCode) = armorGen.Generate(armorName, customName, itemLore, customNBT, color, selectedTriggerOption, itemSkript);
             outputGive = skriptGive;

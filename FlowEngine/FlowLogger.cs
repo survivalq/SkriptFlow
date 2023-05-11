@@ -23,48 +23,32 @@ namespace SkriptFlow.FlowEngine
         {
             var sb = new StringBuilder();
 
-            sb.Append($"{$"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}".Pastel(Color.LightGray)} ");
-            sb.Append($"{"|".Pastel(Color.LightGray)} ");
+            sb.Append($"{$"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}".Pastel(Color.LightGray)} {"|".Pastel(Color.LightGray)} ");
 
             switch (level)
             {
                 case LogLevel.INFO:
-                    sb.Append($"{"INFO".PadRight(5).Pastel(Color.Cyan)} ");
-                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
-                    sb.Append($"{"+".Pastel(Color.Green)} ");
-                    sb.Append($"] {message.Pastel(Color.LightBlue)}");
+                    sb.Append($"{"INFO".PadRight(4).Pastel(Color.Cyan)} {"|".Pastel(Color.LightGray)} {"+".Pastel(Color.Green)} ] {message.Pastel(Color.LightBlue)}");
                     break;
 
                 case LogLevel.WARN:
-                    sb.Append($"{"WARN".PadRight(5).Pastel(Color.Yellow)} ");
-                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
-                    sb.Append($"{"!".Pastel(Color.Yellow)} ");
-                    sb.Append($"] {message.Pastel(Color.LightGoldenrodYellow)}");
+                    sb.Append($"{"WARN".PadRight(4).Pastel(Color.Yellow)} {"|".Pastel(Color.LightGray)} {"!".Pastel(Color.Yellow)} ] {message.Pastel(Color.LightGoldenrodYellow)}");
                     break;
 
                 case LogLevel.ERROR:
-                    sb.Append($"{"ERROR".PadRight(5).Pastel(Color.Red)} ");
-                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
-                    sb.Append($"{"-".Pastel(Color.DarkRed)} ");
-                    sb.Append($"] {message.Pastel(Color.OrangeRed)}");
+                    sb.Append($"{"ERROR".PadRight(4).Pastel(Color.Red)} {"|".Pastel(Color.LightGray)} {"-".Pastel(Color.DarkRed)} ] {message.Pastel(Color.OrangeRed)}");
                     break;
 
                 case LogLevel.DEBUG:
-                    sb.Append($"{"DEBUG".PadRight(5).Pastel(Color.Violet)} ");
-                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
-                    sb.Append($"{"*".Pastel(Color.Magenta)} ");
-                    sb.Append($"] {message.Pastel(Color.LightGray)}");
+                    sb.Append($"{"DEBUG".PadRight(4).Pastel(Color.Violet)} {"|".Pastel(Color.LightGray)} {"*".Pastel(Color.Magenta)} ] {message.Pastel(Color.LightGray)}");
                     break;
 
                 case LogLevel.FATAL:
-                    sb.Append($"{"FATAL".PadRight(5).Pastel(Color.Crimson)} ");
-                    sb.Append($"{"|".Pastel(Color.LightGray)} ");
-                    sb.Append($"{"X".Pastel(Color.Crimson)} ");
-                    sb.Append($"] {message.PastelBg(Color.DarkRed).Pastel(Color.White)}");
+                    sb.Append($"{"FATAL".PadRight(4).Pastel(Color.Crimson)} {"|".Pastel(Color.LightGray)} {"X".Pastel(Color.Crimson)} ] {message.PastelBg(Color.DarkRed).Pastel(Color.White)}");
                     break;
 
                 default:
-                    sb.Append($"{message.Pastel(Color.Black)}");
+                    sb.Append($"{"DEBUG".PadRight(4).Pastel(Color.Violet)} {"|".Pastel(Color.LightGray)} {"*".Pastel(Color.Magenta)} ] {message.Pastel(Color.LightGray)}");
                     break;
             }
 
