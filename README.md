@@ -1,7 +1,18 @@
-# SkriptFlow
-![Image](https://media.discordapp.net/attachments/895333413060493342/1100090495620874431/output.png?width=1440&height=602)
-> Advance lore/skript generator.
+<div align="center">
+<a href="https://github.com/WarpCord">
+  <img src="https://media.discordapp.net/attachments/1123160213499949128/1134455641889587290/skriptflow_logo.png" alt="Logo" width="125" height="125">
+</a>
+</div>
 
+---
+
+<div align="center">
+  🚨 IMPORTANT ANNOUNCEMENT 🚨
+  <br>
+  The SkriptFlow project will no longer be maintained.
+</div>
+
+---
 # Overview
 SkriptFlow is an open-source automation tool designed to streamline your workflow and save time on building your server. With SkriptFlow, creating new items for your server is made easier and more efficient.
 
@@ -18,4 +29,4 @@ SkriptFlow comes with a few themes included in the stable build. However, you ca
 For detailed instructions on how to create plugins, please refer to the [Documentation](https://github.com/survivalq/SkriptFlow/tree/master/Plugin%20Examples/DOCUMENTATION.md).
 
 # UI Showcase
-![Image](https://media.discordapp.net/attachments/895333413060493342/1101760975302049834/Untitled-1.png?width=1053&height=670)
+![Image](https://media.discordapp.net/attachments/1123160213499949128/1134455606762291272/skriptflow_image.png?width=1053&height=670)
