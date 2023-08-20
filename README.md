@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://github.com/WarpCord">
+<a href="https://github.com/survivalq/SkriptFlow">
   <img src="https://media.discordapp.net/attachments/1123160213499949128/1134455641889587290/skriptflow_logo.png" alt="Logo" width="125" height="125">
 </a>
 </div>
